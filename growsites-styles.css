@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSites — Intelligent Brands for the AI Era</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use a clean, modern font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration and Base Styles */
+        :root {
+            --color-primary: #1e3a8a; /* Dark Blue */
+            --color-accent: #8b5cf6; /* Violet */
+            --color-light: #c4b5fd; /* Light Violet */
+            --color-background: #000000; /* Pure Black */
+            --color-text: #f0f9ff; /* Slate 50 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Utility for the glowing/floating aesthetic */
+        .glow-accent {
+            text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+            animation: pulse-glow 3s infinite alternate ease-in-out;
+        }
+
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        .cta-button:hover {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.8), 0 0 50px rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Subtle Floating effect */
+        @keyframes float-hero {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-10px) scale(1.005); }
+        }
+        .float-subtle {
+            animation: float-hero 5s ease-in-out infinite alternate;
+        }
+
+        /* Simple scroll-based fade-in utility class */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom gradient for backgrounds/borders */
+        .bg-gradient-futuristic {
+            background: linear-gradient(135deg, #4c1d95 0%, #3b82f6 50%, #6d28d9 100%);
+        }
+        .border-gradient-futuristic {
+            border: 2px solid transparent;
+            background: linear-gradient(var(--color-background), var(--color-background)) padding-box,
+                        linear-gradient(to right, #6d28d9, #3b82f6) border-box;
+        }
+        
+        /* --- Animated Background Styles --- */
+        
+        /* Shared style for the animated blobs */
+        .animated-blob {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -10;
+            opacity: 0.15; /* Subtler opacity */
+            filter: blur(10rem); /* Extreme blur for smooth glow */
+            pointer-events: none;
+        }
+
+        /* Keyframes for movement of the blobs */
+        @keyframes move-gradient-1 {
+            0% { transform: translate(-20%, -20%) scale(1); }
+            50% { transform: translate(10%, 15%) scale(1.1); }
+            100% { transform: translate(-20%, -20%) scale(1); }
+        }
+
+        @keyframes move-gradient-2 {
+            0% { transform: translate(100%, 100%) scale(1.1); }
+            40% { transform: translate(70%, 80%) scale(0.9); }
+            100% { transform: translate(100%, 100%) scale(1.1); }
+        }
+
+        @keyframes move-gradient-3 {
+            0% { transform: translate(0, 50vh) scale(0.9); }
+            65% { transform: translate(-10vw, 20vh) scale(1.2); }
+            100% { transform: translate(0, 50vh) scale(0.9); }
+        }
+        
+        /* Classes applying the animations */
+        .animate-move-1 {
+            animation: move-gradient-1 15s infinite alternate ease-in-out;
+        }
+        .animate-move-2 {
+            animation: move-gradient-2 20s infinite alternate ease-in-out;
+        }
+        .animate-move-3 {
+            animation: move-gradient-3 18s infinite alternate ease-in-out;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Global Animated Background Layer (Fixed position for the entire site) -->
+    <div class="fixed inset-0 overflow-hidden -z-50 pointer-events-none">
+        <!-- Deep Violet Blob -->
+        <div class="animated-blob bg-violet-800 w-[40rem] h-[40rem] top-[-10rem] left-[-10rem] animate-move-1" style="animation-delay: 0s;"></div>
+        <!-- Azure Blue Blob -->
+        <div class="animated-blob bg-blue-700 w-[50rem] h-[50rem] bottom-[-10rem] right-[-10rem] animate-move-2" style="animation-delay: -5s;"></div>
+        <!-- Silver/Light Blue Blob -->
+        <div class="animated-blob bg-indigo-300 w-[30rem] h-[30rem] top-1/2 left-1/2 animate-move-3" style="animation-delay: -10s;"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 p-6 backdrop-blur-md bg-black/50 border-b border-white/10">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wider glow-accent">
+                Grow<span class="text-violet-400">Sites</span>
+            </div>
+            <!-- The navigation links are correctly hidden on mobile (default) -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-white/80">
+                <a href="#work" class="hover:text-violet-400 transition">Work</a>
+                <a href="#process" class="hover:text-violet-400 transition">Process</a>
+                <a href="#contact" class="hover:text-violet-400 transition">Contact</a>
+            </div>
+            <!-- CTA is visible on mobile for quick access -->
+            <a href="#contact" class="inline-block px-5 py-2 text-sm font-semibold rounded-full bg-violet-600 hover:bg-violet-700 cta-button">
+                [Build Future →]
+            </a>
+        </nav>
+    </header>
+
+    <main class="pt-24">
+        
+        <!-- 1. Hero Section — “The Future of Growth” -->
+        <section id="hero" class="relative min-h-[85vh] flex items-center justify-center text-center p-4 md:p-12 overflow-hidden">
+            
+            <div class="relative z-10 max-w-5xl mx-auto float-subtle">
+                <p class="text-sm md:text-base text-violet-400 font-medium uppercase tracking-widest mb-4 fade-in-scroll">
+                    We build intelligent brands for the AI era.
+                </p>
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 glow-accent leading-tight">
+                    Websites that Think. <br class="hidden sm:block"> Brands that Grow.
+                </h1>
+                <p class="text-lg md:text-2xl max-w-3xl mx-auto mb-10 text-white/70 fade-in-scroll">
+                    We design intelligent digital experiences that don’t just look good — they convert, automate, and evolve with your business.
+                </p>
+                <a href="#contact" class="inline-block px-10 py-4 text-lg font-semibold rounded-full bg-gradient-futuristic text-white cta-button fade-in-scroll">
+                    [Let’s Build Your Future →]
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About / Mission — “Designed by Intuition. Powered by AI.” -->
+        <section id="mission" class="py-24 md:py-36 border-t border-white/10 px-4">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in-scroll">
+                    <!-- Mobile text size set at 4xl for impact -->
+                    <h2 class="text-4xl md:text-6xl font-extrabold mb-8">
+                        Built for the New Digital Era
+                    </h2>
+                    <p class="text-xl md:text-2xl text-white/80 mb-12 max-w-xl">
+                        GrowSites fuses design intuition with intelligent automation. We create digital systems that handle your marketing, conversions, and growth — while you focus on what truly matters: your vision.
+                    </p>
+                </div>
+                
+                <div class="space-y-8 fade-in-scroll">
+                    <div class="p-6 rounded-xl border-gradient-futuristic bg-black/50 hover:bg-black/70 transition duration-300">
+                        <p class="text-violet-400 text-3xl mb-2">✴️</p>
+                        <h3 class="text-xl font-semibold mb-2">Smart Websites</h3>
+                        <p class="text-white/60">that adapt and sell for you.</p>
+                    </div>
+                    <div class="p-6 rounded-xl border-gradient-futuristic bg-black/50 hover:bg-black/70 transition duration-300">
+                        <p class="text-violet-400 text-3xl mb-2">⚙️</p>
+                        <h3 class="text-xl font-semibold mb-2">Automations</h3>
+                        <p class="text-white/60">that save hours every day.</p>
+                    </div>
+                    <div class="p-6 rounded-xl border-gradient-futuristic bg-black/50 hover:bg-black/70 transition duration-300">
+                        <p class="text-violet-400 text-3xl mb-2">🌐</p>
+                        <h3 class="text-xl font-semibold mb-2">AI Systems</h3>
+                        <p class="text-white/60">that scale your brand effortlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Showcase / Visual Section — “What We Create” -->
+        <section id="work" class="py-24 md:py-36 px-4">
+            <div class="max-w-7xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-4 fade-in-scroll">
+                    Your Business, Reimagined.
+                </h2>
+                <p class="text-xl max-w-3xl mx-auto text-white/70 fade-in-scroll">
+                    Every pixel, prompt, and process we design is custom-coded for beauty and performance. From instant-loading websites to voice-powered lead funnels — our work feels alive.
+                </p>
+            </div>
+
+            <!-- Visual Mockup Grid Placeholder - adapts from 4 columns to 2 on small screens -->
+            <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Mockup 1: Website -->
+                <div class="h-48 sm:h-64 rounded-xl bg-gray-900/50 flex flex-col justify-end p-6 border border-violet-700/50 shadow-2xl hover:scale-[1.02] transition duration-500 fade-in-scroll" style="transition-delay: 0s;">
+                    <span class="text-violet-300 text-sm mb-1">Project 01</span>
+                    <h3 class="text-lg sm:text-xl font-bold">Ethereal Interface</h3>
+                    <p class="text-white/60 text-xs sm:text-sm">Adaptive & conversion-focused.</p>
+                </div>
+                <!-- Mockup 2: Dashboard -->
+                <div class="h-48 sm:h-64 rounded-xl bg-gray-900/50 flex flex-col justify-end p-6 border border-blue-700/50 shadow-2xl hover:scale-[1.02] transition duration-500 fade-in-scroll" style="transition-delay: 0.1s;">
+                    <span class="text-blue-300 text-sm mb-1">Project 02</span>
+                    <h3 class="text-lg sm:text-xl font-bold">Automation Dashboard</h3>
+                    <p class="text-white/60 text-xs sm:text-sm">Real-time data visualization.</p>
+                </div>
+                <!-- Mockup 3: Workflow -->
+                <div class="h-48 sm:h-64 rounded-xl bg-gray-900/50 flex flex-col justify-end p-6 border border-pink-700/50 shadow-2xl hover:scale-[1.02] transition duration-500 fade-in-scroll" style="transition-delay: 0.2s;">
+                    <span class="text-pink-300 text-sm mb-1">Project 03</span>
+                    <h3 class="text-lg sm:text-xl font-bold">AI Lead Funnel</h3>
+                    <p class="text-white/60 text-xs sm:text-sm">Voice-powered lead capture.</p>
+                </div>
+                <!-- Mockup 4: Mobile View -->
+                <div class="h-48 sm:h-64 rounded-xl bg-gray-900/50 flex flex-col justify-end p-6 border border-teal-700/50 shadow-2xl hover:scale-[1.02] transition duration-500 fade-in-scroll" style="transition-delay: 0.3s;">
+                    <span class="text-teal-300 text-sm mb-1">Project 04</span>
+                    <h3 class="text-lg sm:text-xl font-bold">Mobile Optimization</h3>
+                    <p class="text-white/60 text-xs sm:text-sm">Perfect on every device.</p>
+                </div>
+            </div>
+
+            <p class="mt-12 text-center text-sm italic text-white/50 fade-in-scroll">
+                Each build is handcrafted, unique, and energy-coded for conversion.
+            </p>
+        </section>
+
+        <!-- 4. Offer Section — “Our Signature Process” -->
+        <section id="process" class="py-24 md:py-36 border-t border-white/10 px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-center mb-16 fade-in-scroll">
+                    The GrowSites Blueprint
+                </h2>
+                
+                <!-- Columns collapse to stack vertically on mobile (default grid) -->
+                <div class="relative grid md:grid-cols-3 gap-12">
+                    <!-- Step 1 -->
+                    <div class="relative p-8 rounded-xl bg-black/50 border border-violet-600/50 shadow-2xl glow-accent/20 fade-in-scroll" style="transition-delay: 0s;">
+                        <span class="absolute top-[-20px] left-8 text-5xl font-extrabold text-violet-400 glow-accent">1️⃣</span>
+                        <h3 class="text-3xl font-bold mt-4 mb-4">Discover</h3>
+                        <p class="text-white/70">We uncover your brand’s energy, vision, and audience to architect the perfect intelligent system.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative p-8 rounded-xl bg-black/50 border border-violet-600/50 shadow-2xl glow-accent/20 fade-in-scroll" style="transition-delay: 0.2s;">
+                        <span class="absolute top-[-20px] left-8 text-5xl font-extrabold text-violet-400 glow-accent">2️⃣</span>
+                        <h3 class="text-3xl font-bold mt-4 mb-4">Design</h3>
+                        <p class="text-white/70">We vibe-code your website into a living, breathing experience, fusing elegance with performance.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative p-8 rounded-xl bg-black/50 border border-violet-600/50 shadow-2xl glow-accent/20 fade-in-scroll" style="transition-delay: 0.4s;">
+                        <span class="absolute top-[-20px] left-8 text-5xl font-extrabold text-violet-400 glow-accent">3️⃣</span>
+                        <h3 class="text-3xl font-bold mt-4 mb-4">Deploy</h3>
+                        <p class="text-white/70">In 48 hours, your digital foundation is live, optimized, and ready to generate conversions.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16 fade-in-scroll">
+                    <!-- CTA remains large and easy to tap -->
+                    <a href="#contact" class="inline-block px-12 py-4 text-xl font-bold rounded-full bg-gradient-futuristic text-white cta-button fade-in-scroll">
+                        [Start Your Project →]
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Results / Social Proof — “What Our Clients Say” -->
+        <section id="proof" class="py-24 md:py-36 bg-white/5 border-t border-white/10 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-12 fade-in-scroll">
+                    Trusted by Visionary Brands
+                </h2>
+                
+                <!-- Testimonial Card -->
+                <blockquote class="bg-black/80 p-8 md:p-12 rounded-2xl shadow-3xl border border-violet-600/70 relative fade-in-scroll">
+                    <!-- Text scales down slightly on mobile for better fit -->
+                    <p class="text-xl md:text-3xl italic text-white/90 mb-6">
+                        “GrowSites built a site that feels alive. Our bookings doubled in two weeks — and the automations saved us hours.”
+                    </p>
+                    <cite class="not-italic text-violet-400 font-semibold text-lg block">
+                        — Daniel H., HVAC Founder
+                    </cite>
+                </blockquote>
+
+                <p class="mt-12 text-white/60 text-lg fade-in-scroll">
+                    Real results from real businesses who stepped into the AI age.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. Conversion Call — “Step into the Future” -->
+        <section id="contact" class="py-24 md:py-36 px-4">
+            <div class="max-w-4xl mx-auto text-center bg-violet-900/30 p-10 md:p-16 rounded-3xl border border-violet-400/50 shadow-2xl shadow-violet-900/50 fade-in-scroll">
+                <!-- Text scales down for mobile impact -->
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 glow-accent leading-tight">
+                    The Future Isn’t Coming. It’s Here.
+                </h2>
+                <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-white/80">
+                    Let’s build your intelligent brand experience — beautiful, powerful, and uniquely yours.
+                </p>
+                <a href="mailto:contact@growsites.ai" class="inline-block px-12 py-5 text-xl font-bold rounded-full bg-violet-600 hover:bg-violet-700 text-white cta-button mb-4">
+                    [Book a Discovery Call →]
+                </a>
+                <p class="text-sm text-white/50">
+                    Custom-built websites, designed and launched in 48 hours.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 7. Footer — “Stay in the Flow” -->
+    <footer class="border-t border-white/10 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center md:text-left">
+            <div class="text-3xl font-bold tracking-wider mb-4 md:mb-0 glow-accent">
+                Grow<span class="text-violet-400">Sites</span>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-6 md:mt-4">
+                <div class="space-x-6 text-sm text-white/70 mb-4 md:mb-0">
+                    <a href="#" class="hover:text-violet-400 transition">Home</a>
+                    <a href="#work" class="hover:text-violet-400 transition">Work</a>
+                    <a href="#process" class="hover:text-violet-400 transition">Process</a>
+                    <a href="#contact" class="hover:text-violet-400 transition">Contact</a>
+                </div>
+                <p class="text-xs text-white/50">
+                    © 2025 GrowSites — Crafted with vision and AI.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer to handle the "scroll-based fade-ins"
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.fade-in-scroll');
+
+            const appearOptions = {
+                threshold: 0.1, // Element is 10% visible
+                rootMargin: "0px 0px -100px 0px" // Start 100px before reaching the bottom
+            };
+
+            const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    entry.target.classList.add('fade-in-visible');
+                    appearOnScroll.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+
+</body>
+</html>
